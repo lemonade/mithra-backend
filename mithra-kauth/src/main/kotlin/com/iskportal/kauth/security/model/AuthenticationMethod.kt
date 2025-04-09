@@ -5,7 +5,7 @@ import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
-import java.util.Date
+import java.time.Instant
 
 
 @Entity
@@ -22,8 +22,8 @@ abstract class AuthenticationMethod(
     var authenticationMethodId: Long? = null
 
     @CreatedDate
-    lateinit var createdDate: Date
+    lateinit var createdDate: Instant
 
     @LastModifiedDate
-    lateinit var lastModifiedDate: Date
+    lateinit var lastModifiedDate: Instant
 }

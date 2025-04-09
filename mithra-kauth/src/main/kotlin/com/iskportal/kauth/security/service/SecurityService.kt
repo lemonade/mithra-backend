@@ -26,12 +26,17 @@ class SecurityService(
 
     fun authenticate(authentication: Authentication, createSession: Boolean): UserAuthenticationToken =
         try {
-            val userAuthentication =  authManager.authenticate(authentication)
-            if(createSession)
+            val userAuthentication = authManager.authenticate(authentication)
+            if (createSession)
                 sessionService.createSessionFor(userAuthentication)
             userAuthentication
         } catch (e: AuthenticationException) {
             logger.warn("(authenticate) error: ${ExceptionUtils.getStackTrace(e)}")
             throw BadBehaviorException("credentials doesn't match")
         }
+
+    companion object {
+        val userId: Long
+            get() = (SecurityContextHolder.getContext().authentication as UserAuthenticationToken).userId
+    }
 }

@@ -53,4 +53,8 @@ class User internal constructor() {
     override fun toString(): String {
         return this::class.simpleName + "(id = $userId )"
     }
+
+    companion object {
+        fun of(id: Long): User = User().apply { this.userId = id }
+    }
 }

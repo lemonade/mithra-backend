@@ -14,7 +14,7 @@ import kotlin.jvm.Transient
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
-@Table(name = "isk-session")
+@Table(name = "isk_session")
 @EntityListeners(AuditingEntityListener::class)
 @DiscriminatorColumn(name = "d_type", columnDefinition = "varchar(255)")
 abstract class Session(
@@ -44,10 +44,10 @@ abstract class Session(
     open var sessionId: Long? = null
 
     @CreatedDate
-    open lateinit var createdDate: Date
+    open lateinit var createdDate: Instant
 
     @LastModifiedDate
-    open lateinit var lastModifiedDate: Date
+    open lateinit var lastModifiedDate: Instant
 
 }
 
